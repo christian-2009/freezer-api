@@ -1,6 +1,15 @@
 import app from './app';
 import config from './config/config';
+import {AppDataSource} from "./data-source";
 
-app.listen(config.port, () => {
-    console.log(`Server running on port ${config.port}`);
-});
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!");
+        app.listen(config.port, () => {
+            console.log(`Server is running on port ${config.port}}`);
+        });
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err);
+    });

@@ -1,8 +1,8 @@
 import {Router} from "express";
-import {getBaseUrl} from "../controllers/freezer-item.controller";
+import {createFreezerItem} from "../controllers/freezer-item.controller";
 
 const router = Router();
 
-router.get('/', getBaseUrl)
+router.post('/', createFreezerItem)
 
 export {router as freezerItemRouter};
